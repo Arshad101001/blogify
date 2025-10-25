@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/partials/style.css">
+    <link rel="stylesheet" href="/partials/flowbite.css">
+    <title>Blog</title>
+</head>
+
+<body class="dark:bg-gray-700">
+    <%- include('./partials/nav') %>
+        <div>
+
+            <div class="container mt-6 mx-auto">
+                <h1 class="text-3xl dark:text-white mb-3">
+                    <%= blog.title %>
+                </h1>
+                <img src="<%= blog.coverImageURL %>" alt="" srcset="" class="size-2/4">
+                <pre class="mt-3 dark:text-white text-xl text-wrap w-full"><%= blog.body %></pre>
+
+            </div>
+            <div class="flex justify-end h-auto">
+                <div class="flex justify-end items-center mx-28">
+                    <img src="<%= blog.createdBy.profileImageURL %>" alt="" srcset="" width="100px">
+                    <h1 class="text-3xl text-amber-300">
+                        <%= blog.createdBy.fullName %>
+                    </h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt-3 mx-auto">
+            <h1 class="dark:text-white my-3 text-3xl">Comments (<%= comments.length %>)</h1>
+            <% if (locals.user) { %>
+                <form class="max-w-full " method="post" action="/blog/comment/<%= blog._id %>">
+                    <div class="mb-5">
+
+                        <input type="text" id="email" name="content"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Enter your comment here" required />
+                    </div>
+                    <button type="submit"
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                </form>
+                <% } %>
+
+                <div class="mt-3">
+                    <% comments.forEach(comment => { %>
+                     <div class="dark:text-white">
+                        <div class="flex items-center">
+                            <img src="<%= comment.createdBy.profileImageURL %>" alt="" srcset="" class="size-11">
+                            <h3 class="text-xl"><%= comment.createdBy.fullName %></h3>
+                        </div>
+                        <pre class="p-3 pl-5"><%= comment.content %></pre>
+                     </div>
+                    <% }) %>
+                </div>
+
+
+        </div>
+
+        <script src="/partials/flowbite.min.js"></script>
+</body>
+
+</html>

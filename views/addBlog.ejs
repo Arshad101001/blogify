@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/partials/style.css">
+    <link rel="stylesheet" href="/partials/flowbite.css">
+    <title>Add New Blog</title>
+</head>
+
+<body class="bg-gray-700">
+    <%- include('./partials/nav') %>
+
+        <div class="container mx-auto mt-16">
+            <section class=" w-2/3 mx-auto" >
+                <div class="py-8 px-4 mx-auto max-w-xl rounded-3xl lg:py-16 dark:bg-gray-900">
+                    <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Create new Blog</h2>
+                    <form action="/blog" method="post" enctype="multipart/form-data">
+                        <div class="sm:gap-6">
+                            <div class="sm:col-span-2 my-2">
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                    for="coverImageURL">Upload file</label>
+                                <input
+                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                    aria-describedby="user_avatar_help" id="user_avatar" name="coverImageURL" type="file">
+                            </div>
+
+                            <div class="sm:col-span-2 my-2">
+                                <label for="title"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
+                                <input type="text" name="title" id="title"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                    placeholder="Enter title" required="">
+                            </div>
+
+                            <div class="sm:col-span-2 my-2">
+                                <label for="description"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Body</label>
+                                <textarea id="body" rows="8" name="body"
+                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                    placeholder="Your description here"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit"
+                            class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center bg-blue-600 text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                            Submit
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+
+        <script src="/partials/flowbite.min.js"></script>
+</body>
+
+</html>
