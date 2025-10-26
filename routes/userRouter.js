@@ -8,8 +8,8 @@ const router = Router();
 router.get('/', async (req, res)=>{
     const allBlog = await Blog.find({});
     res.render('home', {
-        user: req.user,
-        blogs: allBlog,
+        // user: req.user,
+        // blogs: allBlog,
     });
 });
 
